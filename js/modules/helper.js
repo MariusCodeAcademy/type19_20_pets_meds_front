@@ -1,5 +1,8 @@
 // helper fetch fn
 
+const baseUrl = 'http://localhost:3000/v1/api';
+export const petsUrl = `${baseUrl}/pets`;
+
 export async function getDataFetch(url) {
   try {
     const resp = await fetch(url);
