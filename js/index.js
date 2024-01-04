@@ -46,20 +46,15 @@ function makeOnePetCard(pObj) {
   </div>
   `;
   const btnEl = liEl.querySelector('button');
-  btnEl.addEventListener('click', (event) => {
-    const btnPressed = event.target;
-    deletePet(pObj.pet_id, btnPressed);
-  });
+  btnEl.addEventListener('click', deletePet);
 
   return liEl;
 }
-// deletePet(1);
-/**
- *
- * @param {String} idToDelete
- * @param {HTMLButtonElement} btnEl
- */
-function deletePet(idToDelete, btnEl) {
+
+function deletePet(event) {
+  const btnEl = event.target;
+  const cardEl = btnEl.parentElement.parentElement;
+  const idToDelete = cardEl.dataset.petId;
   console.log('deleting pet', idToDelete);
   // isiusti fetch delete
   fetch(`${petsUrl}/${idToDelete}`, {
@@ -70,7 +65,7 @@ function deletePet(idToDelete, btnEl) {
       if (resp.status === 200) {
         console.log('istrinta sekmingai');
         // jei taip tai istrinti pati elementa (el.remove())
-        btnEl.parentElement.parentElement.remove();
+        cardEl.remove();
       }
     })
     .catch((error) => {
@@ -87,7 +82,7 @@ const petObj = {
 };
 
 /*
-<li class="card">
+<li data-pet-id=1 class="card">
   <h3 class="pet-name">Pet name</h3>
   <p class="pet-date">pet dob</p>
   <p class="pet-email">email</p>
