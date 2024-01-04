@@ -2,6 +2,7 @@
 
 const baseUrl = 'http://localhost:3000/v1/api';
 export const petsUrl = `${baseUrl}/pets`;
+export const logsUrl = `${baseUrl}/logs`;
 
 export async function getDataFetch(url) {
   try {
