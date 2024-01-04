@@ -21,4 +21,8 @@ export async function getDataFetch(url) {
   }
 }
 
-export function test() {}
+export function niceDate(dbDate) {
+  const dateObj = new Date(dbDate);
+  const formatedDate = dateObj.toLocaleDateString('lt-lt');
+  return formatedDate;
+}
