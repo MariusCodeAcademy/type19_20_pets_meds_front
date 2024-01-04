@@ -45,13 +45,38 @@ function makeOnePetCard(pObj) {
     <button class="btn btn-secondary">Delete</button>
   </div>
   `;
+  const btnEl = liEl.querySelector('button');
+  btnEl.addEventListener('click', (event) => {
+    const btnPressed = event.target;
+    deletePet(pObj.pet_id, btnPressed);
+  });
+
   return liEl;
 }
-
-function deletePet(idToDelete) {
+// deletePet(1);
+/**
+ *
+ * @param {String} idToDelete
+ * @param {HTMLButtonElement} btnEl
+ */
+function deletePet(idToDelete, btnEl) {
+  console.log('deleting pet', idToDelete);
   // isiusti fetch delete
+  fetch(`${petsUrl}/${idToDelete}`, {
+    method: 'DELETE',
+  })
+    .then((resp) => {
+      console.log('resp ===', resp);
+      if (resp.status === 200) {
+        console.log('istrinta sekmingai');
+        // jei taip tai istrinti pati elementa (el.remove())
+        btnEl.parentElement.parentElement.remove();
+      }
+    })
+    .catch((error) => {
+      console.warn('ivyko klaida:', error);
+    });
   // ar sekmingas istrynimas
-  // jei taip tai istrinti pati elementa (el.remove())
 }
 
 const petObj = {
