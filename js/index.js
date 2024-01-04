@@ -3,7 +3,9 @@ import { getDataFetch, petsUrl } from './modules/helper.js';
 
 console.log('index.js file was loaded');
 
-// panaudoti getDataFetch
+const els = {
+  petsList: document.getElementById('pets-list'),
+};
 
 // ir parsiusti pets array
 
@@ -22,6 +24,45 @@ if (Array.isArray(petsArr)) {
 }
 
 function renderPetsList(arr) {
+  els.petsList.innerHTML = '';
   // pagaminti html elementus
+  arr.map(makeOnePetCard).forEach((htmlEl) => {
+    els.petsList.append(htmlEl);
+  });
   // sudeti i sarasa
 }
+
+function makeOnePetCard(pObj) {
+  const liEl = document.createElement('li');
+  liEl.className = 'card';
+  liEl.innerHTML = `
+  <h3 class="pet-name">Pet name</h3>
+  <p class="pet-date">pet dob</p>
+  <p class="pet-email">email</p>
+  <div class="flex center">
+    <a href="logs.html?petId=1" class="btn">View logs</a>
+    <button class="btn btn-secondary">Delete</button>
+  </div>
+  `;
+
+  return liEl;
+}
+
+const petObj = {
+  pet_id: 1,
+  name: 'Rex',
+  dob: '2017-12-31T22:00:00.000Z',
+  client_email: 'rexowner@gmail.com',
+};
+
+/*
+<li class="card">
+  <h3 class="pet-name">Pet name</h3>
+  <p class="pet-date">pet dob</p>
+  <p class="pet-email">email</p>
+  <div class="flex center">
+    <a href="logs.html?petId=1" class="btn">View logs</a>
+    <button class="btn btn-secondary">Delete</button>
+  </div>
+</li>
+*/
