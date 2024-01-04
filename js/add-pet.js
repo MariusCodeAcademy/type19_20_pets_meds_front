@@ -38,3 +38,13 @@ function createPet(event) {
       console.log('err ===', err);
     });
 }
+
+const errArr = [
+  { field: 'name', error: 'required' },
+  { field: 'email', error: 'required' },
+  { field: 'dob', error: 'required' },
+];
+
+// kai yra klaidu,
+// 1. atvaizduoti visas klaidas viename klaidu bloke
+// 2. atvaziduoti klaida ties konkreciu inputu
