@@ -1,11 +1,13 @@
-import { petsUrl } from './modules/helper';
+import { petsUrl } from './modules/helper.js';
 
 const els = {
   form: document.querySelector('form'),
   name: document.getElementById('name'),
   dob: document.getElementById('dob'),
-  email: document.getElementById('email'),
+  clientEmail: document.getElementById('clientEmail'),
 };
+
+console.log('els ===', els);
 
 els.form.addEventListener('submit', createPet);
 
@@ -15,7 +17,7 @@ function createPet(event) {
   const petObj = {
     name: els.name.value,
     dob: els.dob.value,
-    email: els.email.value,
+    clientEmail: els.clientEmail.value,
   };
   console.log('petObj ===', petObj);
   // siusti i serveri
