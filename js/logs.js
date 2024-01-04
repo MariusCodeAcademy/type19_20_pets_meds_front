@@ -50,6 +50,13 @@ function makeOneLogCard(logObj) {
   return liEl;
 }
 
+const presObj = {
+  prescription_id: 1,
+  comment: 'Take some vitamins to heal',
+  timestamp: '2024-01-04T08:29:26.000Z',
+  name: 'Vitamin C',
+};
+
 // irasyti varda i h1
 
 // sugeneruoti korteles sarase <ul id="med-list" class="unlisted grid">
