@@ -3,6 +3,7 @@
 const baseUrl = 'http://localhost:3000/v1/api';
 export const petsUrl = `${baseUrl}/pets`;
 export const logsUrl = `${baseUrl}/logs`;
+export const presUrl = `${baseUrl}/prescriptions`;
 
 export async function getDataFetch(url) {
   try {
@@ -22,8 +23,11 @@ export async function getDataFetch(url) {
   }
 }
 
-export function niceDate(dbDate) {
+export function niceDate(dbDate, format = '') {
   const dateObj = new Date(dbDate);
-  const formatedDate = dateObj.toLocaleDateString('lt-lt');
+  let formatedDate = dateObj.toLocaleDateString('lt-lt');
+  if (format === 'time') {
+    formatedDate = dateObj.toLocaleString('lt-lt');
+  }
   return formatedDate;
 }

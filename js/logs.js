@@ -1,4 +1,4 @@
-import { getDataFetch, logsUrl } from './modules/helper.js';
+import { getDataFetch, logsUrl, niceDate, presUrl } from './modules/helper.js';
 
 console.log('logs.js file was loaded');
 
@@ -15,9 +15,10 @@ console.log('petId ===', petId);
 // http://localhost:3000/v1/api/logs/petId/2
 
 // parsiusti visus irasus
-const [logsArr, error] = await getDataFetch(`${logsUrl}/petId/${petId}`);
+const [logsArr, logError] = await getDataFetch(`${logsUrl}/petId/${petId}`);
+const [presscArr, presError] = await getDataFetch(`${presUrl}/petId/${petId}`);
 
-if (error) {
+if (logError || presError) {
   // show error
 }
 
@@ -25,6 +26,9 @@ console.log('logsArr ===', logsArr);
 
 if (Array.isArray(logsArr)) {
   renderLogsList(logsArr);
+}
+if (Array.isArray(presscArr)) {
+  renderPressList(presscArr);
 }
 
 // irasyti varda i h1
@@ -38,7 +42,25 @@ function renderLogsList(arr) {
   });
   // sudeti i sarasa
 }
+function renderPressList(arr) {
+  // pagaminti html elementus
+  arr.map(makeOnePresCard).forEach((htmlEl) => {
+    els.medList.append(htmlEl);
+  });
+  // sudeti i sarasa
+}
 
+function makeOnePresCard(presObj) {
+  const liEl = document.createElement('li');
+  liEl.className = 'card';
+  liEl.innerHTML = `
+  <p><small>Prescription</small></p>
+  <h3 class="card-tile">${presObj.name}</h3>
+  <p class="card-date"><i>${niceDate(presObj.timestamp, 'time')}</i></p>
+  <p class="card-text">${presObj.comment}</p>
+  `;
+  return liEl;
+}
 function makeOneLogCard(logObj) {
   const liEl = document.createElement('li');
   liEl.className = 'card';
