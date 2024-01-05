@@ -141,3 +141,8 @@ textarea {
   border-radius: 4px;
   font-size: 16px;
 }
+
+.is-invalid {
+  background-color: rgb(255, 230, 225);
+  border-color: tomato;
+}
