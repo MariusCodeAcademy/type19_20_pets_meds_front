@@ -104,3 +104,18 @@
 .navbar__link.active {
   font-weight: bold;
 }
+
+/* Errors */
+
+.errors-list {
+  background-color: rgb(254 226 226);
+  padding: 15px;
+  border: 1px solid tomato;
+  border-radius: 8px;
+  color: red;
+  padding-left: 40px;
+}
+
+.errors-list:empty {
+  display: none;
+}
