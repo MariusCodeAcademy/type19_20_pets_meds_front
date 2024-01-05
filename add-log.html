@@ -1,5 +1,51 @@
-// sukurti forma
+<!DOCTYPE html>
+<html lang="en">
 
-// siusti forma i be
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VET BEE</title>
+  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="js/add-log.js" type="module"></script>
 
-// validuoti laukus ir atvaizduoti klaidas is BE
+</head>
+
+<body>
+
+  <header class="navbar">
+    <nav class="container navbar__container">
+      <a href="index.html" class="navbar__logo">VET BEE</a>
+      <ul class="navbar__menu">
+        <li class="navbar__item"><a href="index.html" class="navbar__link">Home</a></li>
+        <li class="navbar__item"><a href="add-pet.html" class="navbar__link">Add Pet</a></li>
+        <li class="navbar__item"><a href="prescriptions.html" class="navbar__link">Prescriptions</a></li>
+        <li class="navbar__item"><a href="meds.html" class="navbar__link">Meds</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="flex between">
+      <h1>Add log</h1>
+      <a href="index.html" class="btn ">Go back to health records</a>
+    </div>
+
+    <ul id="errors-list" class="errors-list"></ul>
+    <form novalidate>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <input type="text" name="status" id="status" placeholder="Buddy" value="Sick" />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows="3"
+          placeholder="Description">Needs vitamins</textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add pet</button>
+    </form>
+  </div>
+</body>
+
+</html>

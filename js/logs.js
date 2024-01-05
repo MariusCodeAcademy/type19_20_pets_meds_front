@@ -5,11 +5,15 @@ console.log('logs.js file was loaded');
 const els = {
   medList: document.getElementById('med-list'),
   h1: document.querySelector('h1'),
+  linkToAddLog: document.getElementById('add-log-link'),
 };
 // pasiimti petId is query
 
 const petId = new URLSearchParams(window.location.search).get('petId');
 console.log('petId ===', petId);
+
+// add link to add-log.html query params
+els.linkToAddLog.href = `add-log.html?petId=${petId}`;
 
 // atvaizduoti tam pet skirtus logs ir presciptions
 // http://localhost:3000/v1/api/logs/petId/2
